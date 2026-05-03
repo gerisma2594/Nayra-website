@@ -41,10 +41,7 @@ backdrop-filter: blur(16px);
 border-bottom: 1px solid rgba(212,175,127,0.2);
 }
 .nav-logo {
-font-family: ‘Playfair Display’, serif;
-font-size: 26px; font-weight: 900;
-color: #4F6F6A;
-letter-spacing: 3px;
+display:flex; align-items:center;
 text-decoration: none;
 }
 .nav-logo span {
@@ -161,12 +158,14 @@ animation: fadeUp 0.8s ease both;
 font-family: ‘Playfair Display’, serif;
 font-size: clamp(72px, 14vw, 140px);
 font-weight: 900;
+font-style: italic;
 color: #4F6F6A;
-letter-spacing: 8px;
+letter-spacing: 12px;
 line-height: 1;
 margin-bottom: 8px;
 animation: fadeUp 0.8s 0.1s ease both;
 position: relative;
+text-shadow: 2px 2px 0px rgba(212,175,127,0.3);
 }
 .hero-name::after {
 content: ‘نيرا’;
@@ -645,13 +644,12 @@ nav { padding: 16px 24px; }
 <!-- ── NAV ── -->
 
 <nav>
- <a href="index.html" class="nav-logo"><img src="logo.png" alt="NAYRA نيرا" style="height:48px; width:auto; object-fit:contain;"/></a>
-
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="NAYRA نيرا" style="height:52px; width:auto; mix-blend-mode:multiply;"/></a>
   <ul class="nav-links">
-    <li><a href="#about">من أنا</a></li>
-    <li><a href="#courses">الدورات</a></li>
-    <li><a href="#register">التسجيل</a></li>
-    <li><a href="#telegram">تيليغرام</a></li>
+    <li><a href="about.html">من أنا</a></li>
+    <li><a href="design-course.html">الدورات</a></li>
+    <li><a href="index.html#register">التسجيل</a></li>
+    <li><a href="https://t.me/nayraschool" target="_blank">تيليغرام</a></li>
   </ul>
 </nav>
 
@@ -664,15 +662,13 @@ nav { padding: 16px 24px; }
   <div class="botanical botanical-3">🌸</div>
 
   <div class="hero-content">
-   nav-logo"><img src="logo.png" alt="NAYRA" style="height:52px;width:auto;mix-blend-mode:multiply;"/>
-
-
-
+    <div class="hero-eyebrow">
       <div class="dot"></div>
       مرحباً بكِ في عالم الإبداع
       <div class="dot"></div>
     </div>
 
+```
 <h1 class="hero-name">NAYRA</h1>
 
 <div class="hero-tagline" style="margin-top:70px;">
@@ -693,7 +689,7 @@ nav { padding: 16px 24px; }
   <a href="#courses" class="btn-sage">اكتشفي الدورات</a>
   <a href="#register" class="btn-outline-sage">سجّلي اهتمامكِ</a>
 </div>
-
+```
 
   </div>
 
@@ -708,6 +704,7 @@ nav { padding: 16px 24px; }
 <section class="about" id="about">
   <div class="about-inner">
 
+```
 <div class="about-visual">
   <div class="about-frame"><img src="avatar.png" alt="NAYRA نيرا" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"/></div>
   <div class="about-badge">
@@ -718,27 +715,27 @@ nav { padding: 16px 24px; }
 
 <div class="about-text">
   <span class="section-label">من أنا</span>
-  <h2>امرأة جزائرية<br/>بأصول <em>امازيغية</em><br/>وروح حرّة</h2>
+  <h2>امرأة جزائرية<br/>بأصول <em>بربرية</em><br/>وروح حرّة</h2>
   <p>
     أنا <strong>نيرا</strong> — والاسم يحمل معناه في داخله: نواة وتبقي <strong>نور الإبداع</strong>.
   </p>
   <p>
-    امرأة جزائرية ذات أصول امازيغية، أحمل حرية فكرية وإبداعية أريد أن أشاركها معكِ.
+    امرأة جزائرية ذات أصول بربرية، أحمل حرية فكرية وإبداعية أريد أن أشاركها معكِ.
     هنا لن تتعلّمي فقط — ستتحوّلين.
   </p>
   <p>
     معي ستتقدّمين من <strong>ذاتكِ</strong> وتفكيركِ، وتغيّرين نظرتكِ لنفسكِ.
-    هذا المكان للإبداع والخيال والتطبيق وتحقيق الأهداف والأحلام.
+    هذا المكان للإبداع والخيال والتصور والتطبيق وتحقيق الأهداف والأحلام.
   </p>
   <div class="about-values">
     <span class="value-chip">🌿 الإبداع</span>
     <span class="value-chip">✦ الحرية الفكرية</span>
     <span class="value-chip">🌸 التحول</span>
     <span class="value-chip">💫 تحقيق الأهداف</span>
-    <span class="value-chip">🎊 الأصالة الامازيغية</span>
+    <span class="value-chip">🫧 الأصالة البربرية</span>
   </div>
 </div>
-
+```
 
   </div>
 </section>
@@ -749,11 +746,11 @@ nav { padding: 16px 24px; }
   <div class="courses-inner">
     <div class="section-header">
       <span class="section-label">ما الذي ستتعلّمينه</span>
-      <h2>دورتان لكن مسار واحد.<br/><em>تحوّل حقيقي.</em></h2>
+      <h2>دورتان. مسار واحد.<br/><em>تحوّل حقيقي.</em></h2>
       <p>كل دورة مصمّمة خصيصاً للمرأة الجزائرية التي تريد وجوداً رقمياً حقيقياً</p>
     </div>
 
-`
+```
 <div class="courses-grid">
 
   <!-- Design Course -->
@@ -763,7 +760,7 @@ nav { padding: 16px 24px; }
       قريباً — سجّلي الآن
     </div>
     <div class="course-icon">🎨</div>
-    <h3>التصميم على كانفا برو</h3>
+    <h3>التصميم وكانفا</h3>
     <p>تعلّمي كيف تصمّمين بثقة وإبداع — من منشورات السوشيال ميديا إلى المنتجات الرقمية القابلة للبيع</p>
     <ul class="course-features">
       <li>أساسيات التصميم الاحترافي</li>
@@ -795,7 +792,7 @@ nav { padding: 16px 24px; }
   </div>
 
 </div>
-
+```
 
   </div>
 </section>
@@ -811,7 +808,7 @@ nav { padding: 16px 24px; }
       سجّلي معلوماتكِ الآن ليصلكِ كل شيء على واتساب مباشرة قبل الجميع.
     </p>
 
-
+```
 <form class="lead-form" action="https://formspree.io/f/xkoyoqqw" method="POST">
   <input type="hidden" name="_subject" value="تسجيل جديد — NAYRA الرئيسية"/>
   <input type="hidden" name="_language" value="ar"/>
@@ -844,7 +841,7 @@ nav { padding: 16px 24px; }
   </button>
   <p class="form-note">لن نشارك معلوماتكِ مع أي طرف آخر. وعد. 🌿</p>
 </form>
-
+```
 
   </div>
 </section>
@@ -859,7 +856,7 @@ nav { padding: 16px 24px; }
     </div>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
 
-
+```
   <!-- من أنا -->
   <a href="about.html" style="text-decoration:none;">
     <div style="background:#FFFFFF; border-radius:20px; padding:32px 24px; border:1.5px solid rgba(212,175,127,0.2); text-align:center; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
@@ -923,7 +920,7 @@ nav { padding: 16px 24px; }
   </a>
 
 </div>
-
+```
 
   </div>
 </section>
@@ -946,8 +943,8 @@ nav { padding: 16px 24px; }
 
 <!-- ── FOOTER ── -->
 
-<footer>footer-logo"><img src="logo.png" alt="NAYRA" style="height:70px;width:auto;"/>
-
+<footer>
+  <div class="footer-logo"><img src="logo.png" alt="NAYRA نيرا" style="height:80px; width:auto; object-fit:contain; filter:brightness(1.1);"/></div>
   <div class="footer-tagline">وعي • تحول • قيمة</div>
   <ul class="footer-links">
     <li><a href="#about">من أنا</a></li>
@@ -956,7 +953,7 @@ nav { padding: 16px 24px; }
     <li><a href="#telegram">تيليغرام</a></li>
   </ul>
   <div class="footer-divider"></div>
-  <p class="footer-copy">© 2026 NAYRA نيرا — صُنع بإبداع في الجزائر 🌿</p>
+  <p class="footer-copy">© 2024 NAYRA نيرا — صُنع بإبداع في الجزائر 🌿</p>
 </footer>
 
 <script>

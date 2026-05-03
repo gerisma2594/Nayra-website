@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NAYRA نيرا — وعي • تحول • قيمة</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+–sage: #4F6F6A;
+–cream: #F6F1EB;
+–blush: #E8CFC7;
+–gold: #D4AF7F;
+–rose: #D6A6A0;
+–charcoal: #2F2F2F;
+–taupe: #B8A89F;
+–white: #FFFFFF;
+–sage-dark: #3a5450;
+–cream-dark: #EDE7DF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘Cairo’, sans-serif;
+background: #F6F1EB;
+color: #2F2F2F;
+overflow-x: hidden;
+direction: rtl;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 0;
+opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+padding: 20px 48px;
+display: flex; align-items: center; justify-content: space-between;
+background: rgba(246,241,235,0.85);
+backdrop-filter: blur(16px);
+border-bottom: 1px solid rgba(212,175,127,0.2);
+}
+.nav-logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 26px; font-weight: 900;
+color: #4F6F6A;
+letter-spacing: 3px;
+text-decoration: none;
+}
+.nav-logo span {
+font-family: ‘Cairo’, sans-serif;
+font-size: 15px; font-weight: 600;
+color: #D4AF7F;
+margin-right: 8px;
+letter-spacing: 1px;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+font-size: 14px; font-weight: 600; color: #2F2F2F;
+text-decoration: none; letter-spacing: 0.5px;
+transition: color 0.3s;
+position: relative;
+}
+.nav-links a::after {
+content: ‘’; position: absolute; bottom: -4px; right: 0;
+width: 0; height: 1.5px; background: #D4AF7F;
+transition: width 0.3s;
+}
+.nav-links a:hover { color: #4F6F6A; }
+.nav-links a:hover::after { width: 100%; }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+text-align: center;
+padding: 120px 24px 80px;
+position: relative;
+overflow: hidden;
+}
+
+/* Soft gradient mesh background */
+.hero::before {
+content: ‘’;
+position: absolute; inset: 0;
+background:
+radial-gradient(ellipse 70% 50% at 20% 20%, rgba(232,207,199,0.6) 0%, transparent 60%),
+radial-gradient(ellipse 60% 60% at 80% 80%, rgba(79,111,106,0.12) 0%, transparent 60%),
+radial-gradient(ellipse 80% 40% at 50% 100%, rgba(212,175,127,0.2) 0%, transparent 60%),
+#F6F1EB;
+z-index: 0;
+}
+
+/* Decorative circle */
+.hero-circle {
+position: absolute;
+width: 600px; height: 600px;
+border-radius: 50%;
+border: 1px solid rgba(212,175,127,0.2);
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+z-index: 0;
+animation: rotateCircle 30s linear infinite;
+}
+.hero-circle::before {
+content: ‘’;
+position: absolute;
+width: 480px; height: 480px;
+border-radius: 50%;
+border: 1px dashed rgba(79,111,106,0.15);
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+}
+.hero-circle::after {
+content: ‘’;
+position: absolute;
+width: 360px; height: 360px;
+border-radius: 50%;
+border: 1px solid rgba(214,166,160,0.2);
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+}
+@keyframes rotateCircle {
+from { transform: translate(-50%, -50%) rotate(0deg); }
+to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Botanical decorations */
+.botanical {
+position: absolute;
+font-size: 80px;
+opacity: 0.08;
+z-index: 0;
+animation: floatLeaf 8s ease-in-out infinite;
+}
+.botanical-1 { top: 10%; right: 8%; animation-delay: 0s; transform: rotate(20deg); }
+.botanical-2 { bottom: 15%; left: 6%; animation-delay: 3s; transform: rotate(-15deg); font-size: 60px; }
+.botanical-3 { top: 40%; right: 3%; animation-delay: 1.5s; font-size: 40px; }
+@keyframes floatLeaf {
+0%, 100% { transform: translateY(0) rotate(20deg); }
+50% { transform: translateY(-15px) rotate(25deg); }
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+.hero-eyebrow {
+display: inline-flex; align-items: center; gap: 12px;
+background: rgba(255,255,255,0.7);
+border: 1px solid rgba(212,175,127,0.4);
+padding: 8px 24px; border-radius: 50px;
+font-size: 12px; font-weight: 700; letter-spacing: 3px;
+color: #D4AF7F; text-transform: uppercase;
+margin-bottom: 36px;
+backdrop-filter: blur(8px);
+animation: fadeUp 0.8s ease both;
+}
+.hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: #D4AF7F; }
+
+.hero-name {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(72px, 14vw, 140px);
+font-weight: 900;
+color: #4F6F6A;
+letter-spacing: 8px;
+line-height: 1;
+margin-bottom: 8px;
+animation: fadeUp 0.8s 0.1s ease both;
+position: relative;
+}
+.hero-name::after {
+content: ‘نيرا’;
+position: absolute;
+bottom: -20px; left: 50%; transform: translateX(-50%);
+font-family: ‘Cairo’, sans-serif;
+font-size: clamp(18px, 3vw, 28px);
+font-weight: 300;
+color: #B8A89F;
+letter-spacing: 6px;
+white-space: nowrap;
+}
+
+.hero-tagline {
+margin-top: 60px;
+display: flex; align-items: center; justify-content: center; gap: 20px;
+animation: fadeUp 0.8s 0.2s ease both;
+}
+.tagline-word {
+font-family: ‘Cairo’, sans-serif;
+font-size: clamp(14px, 2.5vw, 20px);
+font-weight: 600;
+color: #2F2F2F;
+letter-spacing: 2px;
+}
+.tagline-sep {
+width: 5px; height: 5px; border-radius: 50%;
+background: #D4AF7F;
+flex-shrink: 0;
+}
+
+.hero-desc {
+margin-top: 40px;
+font-size: clamp(15px, 2vw, 18px);
+font-weight: 400;
+color: #4F6F6A;
+line-height: 2;
+max-width: 620px;
+margin-left: auto; margin-right: auto;
+animation: fadeUp 0.8s 0.3s ease both;
+}
+.hero-desc strong { color: #D4AF7F; font-weight: 700; }
+
+.hero-cta {
+margin-top: 48px;
+display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+animation: fadeUp 0.8s 0.4s ease both;
+}
+.btn-sage {
+background: #4F6F6A; color: #F6F1EB;
+padding: 16px 40px; border-radius: 50px;
+font-family: ‘Cairo’, sans-serif; font-size: 15px; font-weight: 700;
+border: none; cursor: pointer; text-decoration: none;
+display: inline-block;
+transition: transform 0.3s, box-shadow 0.3s;
+box-shadow: 0 8px 30px rgba(79,111,106,0.3);
+letter-spacing: 1px;
+}
+.btn-sage:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(79,111,106,0.4); }
+.btn-outline-sage {
+background: transparent; color: #4F6F6A;
+padding: 16px 40px; border-radius: 50px;
+font-family: ‘Cairo’, sans-serif; font-size: 15px; font-weight: 700;
+border: 1.5px solid rgba(79,111,106,0.4); cursor: pointer; text-decoration: none;
+display: inline-block;
+transition: all 0.3s;
+}
+.btn-outline-sage:hover { background: rgba(79,111,106,0.08); border-color: #4F6F6A; }
+
+/* Scroll indicator */
+.scroll-indicator {
+position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+display: flex; flex-direction: column; align-items: center; gap: 8px;
+z-index: 1; animation: fadeUp 1s 0.8s ease both;
+}
+.scroll-indicator span { font-size: 11px; color: #B8A89F; letter-spacing: 2px; font-weight: 600; }
+.scroll-line {
+width: 1px; height: 50px;
+background: linear-gradient(to bottom, #D4AF7F, transparent);
+animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{ opacity:0.3; } 50%{ opacity:1; } }
+
+/* ── ABOUT SECTION ── */
+.about {
+padding: 100px 48px;
+position: relative;
+overflow: hidden;
+}
+.about::before {
+content: ‘’;
+position: absolute;
+width: 500px; height: 500px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(232,207,199,0.4) 0%, transparent 70%);
+top: -100px; left: -100px;
+z-index: 0;
+}
+.about-inner {
+max-width: 1100px; margin: 0 auto;
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 80px; align-items: center;
+position: relative; z-index: 1;
+}
+@media(max-width:768px){ .about-inner { grid-template-columns: 1fr; gap: 48px; } }
+
+.about-visual {
+position: relative;
+}
+.about-frame {
+width: 100%; aspect-ratio: 3/4;
+background: linear-gradient(135deg, #E8CFC7 0%, #F6F1EB 50%, #D6A6A0 100%);
+border-radius: 60% 40% 50% 50% / 60% 50% 50% 40%;
+display: flex; align-items: center; justify-content: center;
+font-size: 80px;
+position: relative;
+overflow: hidden;
+box-shadow: 0 30px 80px rgba(214,166,160,0.3);
+}
+.about-frame::before {
+content: ‘🌿’;
+position: absolute;
+font-size: 120px;
+opacity: 0.15;
+bottom: -20px; right: -20px;
+}
+.about-badge {
+position: absolute;
+bottom: -20px; left: -20px;
+background: #4F6F6A;
+color: #F6F1EB;
+padding: 20px 24px;
+border-radius: 20px;
+text-align: center;
+box-shadow: 0 12px 40px rgba(79,111,106,0.3);
+}
+.about-badge .num { font-size: 32px; font-weight: 900; line-height: 1; }
+.about-badge .label { font-size: 12px; font-weight: 600; opacity: 0.8; margin-top: 4px; }
+
+.about-text .section-label {
+font-size: 11px; font-weight: 700; letter-spacing: 3px;
+text-transform: uppercase; color: #D4AF7F;
+margin-bottom: 16px; display: block;
+}
+.about-text h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(28px, 4vw, 42px);
+font-weight: 900; color: #2F2F2F;
+line-height: 1.2; margin-bottom: 24px;
+}
+.about-text h2 em {
+font-style: italic; color: #4F6F6A;
+}
+.about-text p {
+font-size: 16px; color: #4F6F6A;
+line-height: 2; margin-bottom: 16px;
+}
+.about-text p strong { color: #D4AF7F; font-weight: 700; }
+
+.about-values {
+display: flex; flex-wrap: wrap; gap: 10px;
+margin-top: 32px;
+}
+.value-chip {
+background: rgba(79,111,106,0.08);
+border: 1px solid rgba(79,111,106,0.2);
+color: #4F6F6A;
+padding: 8px 18px; border-radius: 50px;
+font-size: 13px; font-weight: 700;
+}
+
+/* ── COURSES SECTION ── */
+.courses {
+padding: 100px 48px;
+background: #2F2F2F;
+position: relative; overflow: hidden;
+}
+.courses::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(212,175,127,0.08) 0%, transparent 60%);
+}
+.courses-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-header .section-label {
+font-size: 11px; font-weight: 700; letter-spacing: 3px;
+text-transform: uppercase; color: #D4AF7F;
+margin-bottom: 16px; display: block;
+}
+.section-header h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(28px, 4vw, 48px);
+font-weight: 900; color: #F6F1EB;
+line-height: 1.2;
+}
+.section-header h2 em { font-style: italic; color: #D4AF7F; }
+.section-header p {
+font-size: 16px; color: rgba(246,241,235,0.6);
+margin-top: 16px; line-height: 1.8;
+}
+
+.courses-grid {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 32px;
+}
+@media(max-width:768px){ .courses-grid { grid-template-columns: 1fr; } }
+
+.course-card {
+border-radius: 24px;
+padding: 48px 40px;
+position: relative; overflow: hidden;
+transition: transform 0.4s;
+}
+.course-card:hover { transform: translateY(-8px); }
+.course-card-design {
+background: linear-gradient(135deg, #E8CFC7 0%, #F6F1EB 100%);
+}
+.course-card-web {
+background: linear-gradient(135deg, #4F6F6A 0%, #3a5450 100%);
+}
+.course-card::before {
+content: ‘’;
+position: absolute;
+width: 200px; height: 200px;
+border-radius: 50%;
+top: -60px; left: -60px;
+opacity: 0.15;
+}
+.course-card-design::before { background: #D4AF7F; }
+.course-card-web::before { background: #E8CFC7; }
+
+.course-icon {
+width: 64px; height: 64px;
+border-radius: 18px;
+display: flex; align-items: center; justify-content: center;
+font-size: 28px; margin-bottom: 28px;
+position: relative; z-index: 1;
+}
+.course-card-design .course-icon { background: rgba(212,175,127,0.2); }
+.course-card-web .course-icon { background: rgba(246,241,235,0.15); }
+
+.course-card h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 26px; font-weight: 900;
+margin-bottom: 12px;
+position: relative; z-index: 1;
+}
+.course-card-design h3 { color: #2F2F2F; }
+.course-card-web h3 { color: #F6F1EB; }
+
+.course-card p {
+font-size: 15px; line-height: 1.8;
+margin-bottom: 28px;
+position: relative; z-index: 1;
+}
+.course-card-design p { color: #4F6F6A; }
+.course-card-web p { color: rgba(246,241,235,0.75); }
+
+.course-features {
+list-style: none; display: flex; flex-direction: column;
+gap: 10px; margin-bottom: 36px;
+position: relative; z-index: 1;
+}
+.course-features li {
+font-size: 14px; font-weight: 600;
+display: flex; align-items: center; gap: 10px;
+}
+.course-card-design .course-features li { color: #2F2F2F; }
+.course-card-web .course-features li { color: rgba(246,241,235,0.9); }
+.course-features li::before {
+content: ‘✦’;
+font-size: 10px; flex-shrink: 0;
+}
+.course-card-design .course-features li::before { color: #D4AF7F; }
+.course-card-web .course-features li::before { color: #E8CFC7; }
+
+.course-cta {
+display: inline-block;
+padding: 14px 32px; border-radius: 50px;
+font-family: ‘Cairo’, sans-serif; font-size: 14px; font-weight: 700;
+text-decoration: none; letter-spacing: 1px;
+transition: all 0.3s;
+position: relative; z-index: 1;
+}
+.course-card-design .course-cta {
+background: #4F6F6A; color: #F6F1EB;
+box-shadow: 0 8px 24px rgba(79,111,106,0.3);
+}
+.course-card-web .course-cta {
+background: #D4AF7F; color: #2F2F2F;
+box-shadow: 0 8px 24px rgba(212,175,127,0.3);
+}
+.course-cta:hover { transform: translateY(-2px); }
+
+.coming-soon-badge {
+display: inline-flex; align-items: center; gap: 6px;
+background: rgba(212,175,127,0.15);
+border: 1px solid rgba(212,175,127,0.4);
+color: #D4AF7F; padding: 6px 14px; border-radius: 50px;
+font-size: 11px; font-weight: 700; letter-spacing: 2px;
+margin-bottom: 20px;
+}
+.coming-soon-badge .pulse {
+width: 6px; height: 6px; border-radius: 50%;
+background: #D4AF7F;
+animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:0.5; transform:scale(0.8); } }
+
+/* ── LEAD FORM ── */
+.lead-section {
+padding: 100px 48px;
+background: linear-gradient(135deg, #F6F1EB 0%, #EDE7DF 100%);
+position: relative; overflow: hidden;
+}
+.lead-section::before {
+content: ‘✦’;
+position: absolute;
+font-size: 300px;
+color: rgba(212,175,127,0.06);
+top: -60px; right: -40px;
+line-height: 1;
+pointer-events: none;
+}
+.lead-inner {
+max-width: 680px; margin: 0 auto;
+text-align: center; position: relative; z-index: 1;
+}
+.lead-inner .section-label {
+font-size: 11px; font-weight: 700; letter-spacing: 3px;
+text-transform: uppercase; color: #D4AF7F;
+margin-bottom: 16px; display: block;
+}
+.lead-inner h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(28px, 4vw, 42px);
+font-weight: 900; color: #2F2F2F;
+line-height: 1.3; margin-bottom: 16px;
+}
+.lead-inner h2 em { font-style: italic; color: #4F6F6A; }
+.lead-inner p {
+font-size: 16px; color: #4F6F6A; line-height: 1.8; margin-bottom: 48px;
+}
+
+.lead-form {
+display: flex; flex-direction: column; gap: 16px;
+background: #FFFFFF;
+border-radius: 24px; padding: 40px;
+box-shadow: 0 20px 60px rgba(79,111,106,0.1);
+border: 1px solid rgba(212,175,127,0.2);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:600px){ .form-row { grid-template-columns: 1fr; } }
+
+.form-group { display: flex; flex-direction: column; gap: 8px; text-align: right; }
+.form-group label {
+font-size: 13px; font-weight: 700; color: #2F2F2F; letter-spacing: 0.5px;
+}
+.form-group input, .form-group select {
+padding: 14px 18px; border-radius: 12px;
+border: 1.5px solid rgba(79,111,106,0.2);
+background: #F6F1EB;
+font-family: ‘Cairo’, sans-serif; font-size: 14px;
+color: #2F2F2F; outline: none;
+transition: border-color 0.3s;
+direction: rtl;
+}
+.form-group input:focus, .form-group select:focus {
+border-color: #4F6F6A;
+background: #FFFFFF;
+}
+.form-group input::placeholder { color: #B8A89F; }
+
+.btn-submit {
+background: linear-gradient(135deg, #4F6F6A 0%, #3a5450 100%);
+color: #F6F1EB;
+padding: 18px; border-radius: 14px;
+font-family: ‘Cairo’, sans-serif; font-size: 16px; font-weight: 700;
+border: none; cursor: pointer; letter-spacing: 1px;
+transition: all 0.3s;
+box-shadow: 0 8px 30px rgba(79,111,106,0.3);
+margin-top: 8px;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(79,111,106,0.4); }
+
+.form-note {
+font-size: 12px; color: #B8A89F;
+text-align: center; margin-top: 4px;
+}
+
+/* ── TELEGRAM SECTION ── */
+.telegram-section {
+padding: 80px 48px;
+background: #4F6F6A;
+text-align: center;
+}
+.telegram-inner { max-width: 600px; margin: 0 auto; }
+.telegram-icon {
+width: 80px; height: 80px; border-radius: 50%;
+background: rgba(255,255,255,0.15);
+display: flex; align-items: center; justify-content: center;
+font-size: 36px; margin: 0 auto 28px;
+border: 1px solid rgba(255,255,255,0.2);
+}
+.telegram-section h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(24px, 3vw, 36px);
+color: #F6F1EB; font-weight: 900;
+margin-bottom: 16px;
+}
+.telegram-section p {
+font-size: 16px; color: rgba(246,241,235,0.75);
+line-height: 1.8; margin-bottom: 36px;
+}
+.btn-telegram {
+background: #F6F1EB; color: #4F6F6A;
+padding: 16px 40px; border-radius: 50px;
+font-family: ‘Cairo’, sans-serif; font-size: 15px; font-weight: 700;
+text-decoration: none; display: inline-block;
+transition: all 0.3s;
+box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+.btn-telegram:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
+
+/* ── FOOTER ── */
+footer {
+background: #2F2F2F;
+padding: 60px 48px 32px;
+text-align: center;
+}
+.footer-logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 36px; font-weight: 900;
+color: #4F6F6A; letter-spacing: 6px;
+margin-bottom: 8px;
+}
+.footer-tagline {
+font-size: 13px; color: #D4AF7F;
+letter-spacing: 4px; margin-bottom: 40px;
+}
+.footer-links {
+display: flex; gap: 32px; justify-content: center;
+list-style: none; margin-bottom: 40px; flex-wrap: wrap;
+}
+.footer-links a {
+font-size: 13px; font-weight: 600; color: rgba(246,241,235,0.5);
+text-decoration: none; letter-spacing: 0.5px;
+transition: color 0.3s;
+}
+.footer-links a:hover { color: #D4AF7F; }
+.footer-divider {
+width: 60px; height: 1px;
+background: linear-gradient(to right, transparent, #D4AF7F, transparent);
+margin: 0 auto 24px;
+}
+.footer-copy { font-size: 12px; color: rgba(246,241,235,0.25); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity:0; transform:translateY(30px); }
+to { opacity:1; transform:translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+nav { padding: 16px 24px; }
+.nav-links { display: none; }
+.about, .courses, .lead-section, .telegram-section, footer { padding-left: 24px; padding-right: 24px; }
+.hero-name::after { font-size: 16px; bottom: -16px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ── NAV ── -->
+
+<nav>
+  <a href="#" class="nav-logo">NAYRA <span>نيرا</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">من أنا</a></li>
+    <li><a href="#courses">الدورات</a></li>
+    <li><a href="#register">التسجيل</a></li>
+    <li><a href="#telegram">تيليغرام</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+
+<section class="hero">
+  <div class="hero-circle"></div>
+  <div class="botanical botanical-1">🌿</div>
+  <div class="botanical botanical-2">✦</div>
+  <div class="botanical botanical-3">🌸</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="dot"></div>
+      مرحباً بكِ في عالم الإبداع
+      <div class="dot"></div>
+    </div>
+
+```
+<h1 class="hero-name">NAYRA</h1>
+
+<div class="hero-tagline" style="margin-top:70px;">
+  <span class="tagline-word">وعي</span>
+  <div class="tagline-sep"></div>
+  <span class="tagline-word">تحول</span>
+  <div class="tagline-sep"></div>
+  <span class="tagline-word">قيمة</span>
+</div>
+
+<p class="hero-desc">
+  مكان للإبداع والخيال والتصور والتطبيق<br/>
+  هنا تتقدمين من <strong>ذاتكِ</strong> وتفكيركِ<br/>
+  وتُغيّرين نظرتكِ لنفسكِ
+</p>
+
+<div class="hero-cta">
+  <a href="#courses" class="btn-sage">اكتشفي الدورات</a>
+  <a href="#register" class="btn-outline-sage">سجّلي اهتمامكِ</a>
+</div>
+```
+
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>اكتشفي</span>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+
+<section class="about" id="about">
+  <div class="about-inner">
+
+```
+<div class="about-visual">
+  <div class="about-frame">🌸</div>
+  <div class="about-badge">
+    <div class="num">نيرا</div>
+    <div class="label">نواة • نور الإبداع</div>
+  </div>
+</div>
+
+<div class="about-text">
+  <span class="section-label">من أنا</span>
+  <h2>امرأة جزائرية<br/>بأصول <em>بربرية</em><br/>وروح حرّة</h2>
+  <p>
+    أنا <strong>نيرا</strong> — والاسم يحمل معناه في داخله: نواة وتبقي <strong>نور الإبداع</strong>.
+  </p>
+  <p>
+    امرأة جزائرية ذات أصول بربرية، أحمل حرية فكرية وإبداعية أريد أن أشاركها معكِ.
+    هنا لن تتعلّمي فقط — ستتحوّلين.
+  </p>
+  <p>
+    معي ستتقدّمين من <strong>ذاتكِ</strong> وتفكيركِ، وتغيّرين نظرتكِ لنفسكِ.
+    هذا المكان للإبداع والخيال والتصور والتطبيق وتحقيق الأهداف والأحلام.
+  </p>
+  <div class="about-values">
+    <span class="value-chip">🌿 الإبداع</span>
+    <span class="value-chip">✦ الحرية الفكرية</span>
+    <span class="value-chip">🌸 التحول</span>
+    <span class="value-chip">💫 تحقيق الأهداف</span>
+    <span class="value-chip">🫧 الأصالة البربرية</span>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ── COURSES ── -->
+
+<section class="courses" id="courses">
+  <div class="courses-inner">
+    <div class="section-header">
+      <span class="section-label">ما الذي ستتعلّمينه</span>
+      <h2>دورتان. مسار واحد.<br/><em>تحوّل حقيقي.</em></h2>
+      <p>كل دورة مصمّمة خصيصاً للمرأة الجزائرية التي تريد وجوداً رقمياً حقيقياً</p>
+    </div>
+
+```
+<div class="courses-grid">
+
+  <!-- Design Course -->
+  <div class="course-card course-card-design">
+    <div class="coming-soon-badge">
+      <div class="pulse"></div>
+      قريباً — سجّلي الآن
+    </div>
+    <div class="course-icon">🎨</div>
+    <h3>التصميم وكانفا</h3>
+    <p>تعلّمي كيف تصمّمين بثقة وإبداع — من منشورات السوشيال ميديا إلى المنتجات الرقمية القابلة للبيع</p>
+    <ul class="course-features">
+      <li>أساسيات التصميم الاحترافي</li>
+      <li>كانفا من الصفر إلى الاحتراف</li>
+      <li>إنشاء منتجات رقمية للبيع</li>
+      <li>تصميم هوية بصرية كاملة</li>
+      <li>بث مباشر على تيليغرام</li>
+    </ul>
+    <a href="#register" class="course-cta">سجّلي اهتمامكِ ←</a>
+  </div>
+
+  <!-- Web Course -->
+  <div class="course-card course-card-web">
+    <div class="coming-soon-badge">
+      <div class="pulse"></div>
+      قريباً — سجّلي الآن
+    </div>
+    <div class="course-icon">🌐</div>
+    <h3>الموقع الإلكتروني والحضور الرقمي</h3>
+    <p>للأطباء والمحامين والمعلمين — أنشئي موقعكِ الاحترافي وظهري على Google في الجزائر</p>
+    <ul class="course-features">
+      <li>إنشاء موقع احترافي بدون كود</li>
+      <li>SEO محلي — ظهوري في الجزائر</li>
+      <li>Google Business وخرائط Google</li>
+      <li>استقطاب عملاء حقيقيين</li>
+      <li>بث مباشر على تيليغرام</li>
+    </ul>
+    <a href="#register" class="course-cta">سجّلي اهتمامكِ ←</a>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ── LEAD FORM ── -->
+
+<section class="lead-section" id="register">
+  <div class="lead-inner">
+    <span class="section-label">كوني أول من يعلم</span>
+    <h2>سجّلي اهتمامكِ<br/>وستصلكِ <em>التفاصيل أولاً</em></h2>
+    <p>
+      الأسعار والمواعيد والتفاصيل قريباً.
+      سجّلي معلوماتكِ الآن ليصلكِ كل شيء على واتساب مباشرة قبل الجميع.
+    </p>
+
+```
+<form class="lead-form" action="https://formspree.io/f/xkoyoqqw" method="POST">
+  <input type="hidden" name="_subject" value="تسجيل جديد — NAYRA الرئيسية"/>
+  <input type="hidden" name="_language" value="ar"/>
+  <div class="form-row">
+    <div class="form-group">
+      <label>الاسم الكامل</label>
+      <input type="text" name="name" placeholder="اسمكِ هنا..." required/>
+    </div>
+    <div class="form-group">
+      <label>رقم واتساب</label>
+      <input type="tel" name="whatsapp" placeholder="05xxxxxxxx" required/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>الدورة التي تهمّكِ</label>
+    <select name="course" required>
+      <option value="">اختاري الدورة...</option>
+      <option>🎨 التصميم وكانفا — المستوى الأول</option>
+      <option>🖨️ كانفا برو والطباعة — المستوى الثاني</option>
+      <option>🌐 الموقع الإلكتروني والحضور الرقمي</option>
+      <option>💫 كل الدورات</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>ولايتكِ في الجزائر</label>
+    <input type="text" name="wilaya" placeholder="الجزائر العاصمة، وهران، قسنطينة..."/>
+  </div>
+  <button type="submit" class="btn-submit">
+    سجّلي الآن — مجاناً ✦
+  </button>
+  <p class="form-note">لن نشارك معلوماتكِ مع أي طرف آخر. وعد. 🌿</p>
+</form>
+```
+
+  </div>
+</section>
+
+<!-- ── TELEGRAM ── -->
+
+<section class="telegram-section" id="telegram">
+  <div class="telegram-inner">
+    <div class="telegram-icon">✈️</div>
+    <h2>انضمي إلى مجتمع NAYRA على تيليغرام</h2>
+    <p>
+      حيث تجتمع النساء الجزائريات المبدعات.
+      نشارك، نتعلّم، ننمو معاً — والدورات ستُبثّ مباشرةً هنا.
+    </p>
+    <a href="https://t.me/nayra" class="btn-telegram" target="_blank">
+      انضمي إلى القناة ←
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+
+<footer>
+  <div class="footer-logo">NAYRA</div>
+  <div class="footer-tagline">وعي • تحول • قيمة</div>
+  <ul class="footer-links">
+    <li><a href="#about">من أنا</a></li>
+    <li><a href="#courses">الدورات</a></li>
+    <li><a href="#register">التسجيل</a></li>
+    <li><a href="#telegram">تيليغرام</a></li>
+  </ul>
+  <div class="footer-divider"></div>
+  <p class="footer-copy">© 2024 NAYRA نيرا — صُنع بإبداع في الجزائر 🌿</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.who-card, .course-card, .outcome-card, .about-inner, .lead-inner').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

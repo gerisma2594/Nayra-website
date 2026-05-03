@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>من أنا — NAYRA نيرا</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size: 18px; }
+  body { font-family:'Cairo',sans-serif; font-size:18px; background:#F6F1EB; color:#2F2F2F; overflow-x:hidden; direction:rtl; }
+
+/* ── NAV ── */
+nav {
+position:fixed; top:0; left:0; right:0; z-index:100;
+padding:18px 48px;
+display:flex; align-items:center; justify-content:space-between;
+background:rgba(246,241,235,0.92); backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(212,175,127,0.2);
+}
+.nav-logo { font-family:‘Playfair Display’,serif; font-size:24px; font-weight:900; color:#4F6F6A; letter-spacing:3px; text-decoration:none; }
+.nav-logo span { font-family:‘Cairo’,sans-serif; font-size:16px; font-weight:600; color:#D4AF7F; margin-right:6px; }
+.nav-links { display:flex; gap:28px; list-style:none; }
+.nav-links a { font-size:16px; font-weight:600; color:#2F2F2F; text-decoration:none; transition:color 0.3s; }
+.nav-links a:hover, .nav-links a.active { color:#4F6F6A; }
+@media(max-width:768px){ .nav-links{display:none;} nav{padding:16px 24px;} }
+
+/* ── HERO ── */
+.hero {
+min-height: 60vh;
+padding: 140px 48px 80px;
+display:flex; align-items:center;
+background: linear-gradient(135deg, #F6F1EB 0%, #EDE7DF 50%, #E8CFC7 100%);
+position:relative; overflow:hidden;
+}
+.hero::before {
+content:’’;
+position:absolute; inset:0;
+background: radial-gradient(ellipse 50% 80% at 0% 50%, rgba(79,111,106,0.08) 0%, transparent 60%);
+}
+.hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; position:relative; z-index:1; }
+@media(max-width:768px){ .hero-inner{grid-template-columns:1fr; gap:40px; text-align:center;} }
+
+.hero-text .breadcrumb { font-size:15px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#D4AF7F; margin-bottom:20px; display:block; }
+.hero-text h1 { font-family:‘Playfair Display’,serif; font-size:clamp(36px,5vw,64px); font-weight:900; color:#2F2F2F; line-height:1.15; margin-bottom:24px; }
+.hero-text h1 em { font-style:italic; color:#4F6F6A; }
+.hero-text p { font-size:17px; color:#4F6F6A; line-height:2; }
+
+/* ── AVATAR ── */
+.avatar-wrap { display:flex; justify-content:center; align-items:center; }
+.avatar-outer {
+width:320px; height:320px; border-radius:50%;
+background: linear-gradient(135deg, #E8CFC7 0%, #D6A6A0 50%, #D4AF7F 100%);
+display:flex; align-items:center; justify-content:center;
+position:relative;
+box-shadow: 0 30px 80px rgba(214,166,160,0.4);
+animation: floatAvatar 6s ease-in-out infinite;
+overflow:hidden;
+padding: 6px;
+}
+@keyframes floatAvatar { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+.avatar-outer::before {
+content:’’;
+position:absolute; inset:-12px;
+border-radius:50%;
+border: 1.5px dashed rgba(212,175,127,0.4);
+}
+.avatar-outer::after {
+content:’’;
+position:absolute; inset:-24px;
+border-radius:50%;
+border: 1px solid rgba(79,111,106,0.15);
+}
+/* Cartoon avatar SVG */
+.avatar-face {
+width:200px; height:200px;
+position:relative; z-index:1;
+}
+
+@media(max-width:768px){ .avatar-outer{width:220px;height:220px;} .avatar-face{width:140px;height:140px;} }
+
+/* ── STORY ── */
+.story { padding:100px 48px; background:#FFFFFF; }
+.story-inner { max-width:900px; margin:0 auto; }
+.story-inner .section-label { font-size:16px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#D4AF7F; margin-bottom:16px; display:block; }
+.story-inner h2 { font-family:‘Playfair Display’,serif; font-size:clamp(28px,4vw,42px); font-weight:900; color:#2F2F2F; margin-bottom:48px; line-height:1.2; }
+.story-inner h2 em { font-style:italic; color:#4F6F6A; }
+
+.timeline { display:flex; flex-direction:column; gap:0; }
+.timeline-item { display:flex; gap:32px; position:relative; }
+.timeline-item:not(:last-child)::after {
+content:’’; position:absolute;
+right:19px; top:44px; bottom:0; width:2px;
+background: linear-gradient(to bottom, #D4AF7F, rgba(212,175,127,0.1));
+}
+.timeline-dot {
+width:40px; height:40px; border-radius:50%; flex-shrink:0;
+display:flex; align-items:center; justify-content:center;
+font-size:16px; z-index:1;
+}
+.dot-rose { background:#E8CFC7; }
+.dot-sage { background:rgba(79,111,106,0.15); }
+.dot-gold { background:rgba(212,175,127,0.2); }
+.dot-green { background:#4F6F6A; }
+
+.timeline-body { padding:4px 0 48px; flex:1; }
+.timeline-body h3 { font-family:‘Playfair Display’,serif; font-size:20px; font-weight:700; color:#2F2F2F; margin-bottom:10px; }
+.timeline-body p { font-size:15px; color:#4F6F6A; line-height:2; }
+.timeline-body strong { color:#D4AF7F; font-weight:700; }
+
+/* ── VALUES ── */
+.values { padding:100px 48px; background:#F6F1EB; }
+.values-inner { max-width:1100px; margin:0 auto; }
+.values-inner .section-label { font-size:16px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#D4AF7F; margin-bottom:16px; display:block; text-align:center; }
+.values-inner h2 { font-family:‘Playfair Display’,serif; font-size:clamp(28px,4vw,42px); font-weight:900; color:#2F2F2F; text-align:center; margin-bottom:64px; }
+.values-inner h2 em { font-style:italic; color:#4F6F6A; }
+
+.values-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; }
+.value-card {
+background:#FFFFFF; border-radius:20px; padding:36px 28px;
+border:1px solid rgba(212,175,127,0.2);
+transition:transform 0.3s, box-shadow 0.3s;
+text-align:center;
+}
+.value-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(79,111,106,0.1); }
+.value-icon { font-size:40px; margin-bottom:20px; display:block; }
+.value-card h3 { font-family:‘Playfair Display’,serif; font-size:20px; font-weight:700; color:#2F2F2F; margin-bottom:12px; }
+.value-card p { font-size:16px; color:#4F6F6A; line-height:1.8; }
+
+/* ── SKILLS ── */
+.skills { padding:100px 48px; background:#2F2F2F; }
+.skills-inner { max-width:1100px; margin:0 auto; }
+.skills-inner .section-label { font-size:16px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#D4AF7F; margin-bottom:16px; display:block; text-align:center; }
+.skills-inner h2 { font-family:‘Playfair Display’,serif; font-size:clamp(28px,4vw,42px); font-weight:900; color:#F6F1EB; text-align:center; margin-bottom:64px; }
+.skills-inner h2 em { font-style:italic; color:#D4AF7F; }
+
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+.skill-chip {
+background:rgba(246,241,235,0.06); border:1px solid rgba(246,241,235,0.12);
+border-radius:16px; padding:28px 20px; text-align:center;
+transition:all 0.3s;
+}
+.skill-chip:hover { background:rgba(212,175,127,0.1); border-color:rgba(212,175,127,0.3); }
+.skill-chip .icon { font-size:32px; margin-bottom:12px; display:block; }
+.skill-chip h4 { font-size:15px; font-weight:700; color:#F6F1EB; margin-bottom:6px; }
+.skill-chip p { font-size:15px; color:rgba(246,241,235,0.5); }
+
+/* ── CTA ── */
+.cta-section { padding:100px 48px; background: linear-gradient(135deg, #4F6F6A 0%, #3a5450 100%); text-align:center; }
+.cta-section h2 { font-family:‘Playfair Display’,serif; font-size:clamp(28px,4vw,48px); font-weight:900; color:#F6F1EB; margin-bottom:16px; }
+.cta-section h2 em { font-style:italic; color:#D4AF7F; }
+.cta-section p { font-size:17px; color:rgba(246,241,235,0.75); max-width:500px; margin:0 auto 40px; line-height:1.8; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-gold { background:#D4AF7F; color:#2F2F2F; padding:16px 40px; border-radius:50px; font-family:‘Cairo’,sans-serif; font-size:15px; font-weight:700; text-decoration:none; display:inline-block; transition:all 0.3s; box-shadow:0 8px 30px rgba(212,175,127,0.3); }
+.btn-gold:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(212,175,127,0.4); }
+.btn-outline-white { background:transparent; color:#F6F1EB; padding:16px 40px; border-radius:50px; font-family:‘Cairo’,sans-serif; font-size:15px; font-weight:700; text-decoration:none; display:inline-block; border:1.5px solid rgba(246,241,235,0.4); transition:all 0.3s; }
+.btn-outline-white:hover { background:rgba(246,241,235,0.1); }
+
+/* ── FOOTER ── */
+footer { background:#2F2F2F; padding:48px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-logo { font-family:‘Playfair Display’,serif; font-size:28px; font-weight:900; color:#4F6F6A; letter-spacing:5px; margin-bottom:6px; }
+.footer-tagline { font-size:15px; color:#D4AF7F; letter-spacing:4px; margin-bottom:28px; }
+.footer-social { display:flex; gap:20px; justify-content:center; margin-bottom:28px; }
+.social-btn { width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; font-size:18px; text-decoration:none; transition:all 0.3s; }
+.social-btn:hover { background:rgba(212,175,127,0.15); border-color:rgba(212,175,127,0.4); }
+.footer-nav { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
+.footer-nav a { font-size:16px; font-weight:600; color:rgba(246,241,235,0.4); text-decoration:none; transition:color 0.3s; }
+.footer-nav a:hover { color:#D4AF7F; }
+.footer-copy { font-size:15px; color:rgba(246,241,235,0.2); }
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NAYRA <span>نيرا</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="about.html" class="active">من أنا</a></li>
+    <li><a href="design-course.html">دورة التصميم</a></li>
+    <li><a href="web-course.html">دورة الموقع</a></li>
+    <li><a href="blog.html">المدونة</a></li>
+    <li><a href="contact.html">التواصل</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="breadcrumb">من أنا</span>
+      <h1>امرأة جزائرية<br/>وجدت <em>شغفها</em><br/>وتريد أن تنير طريقكِ</h1>
+      <p>أنا نيرا — اسمي يحمل معناه: <strong>نواة ونور الإبداع.</strong><br/>
+      هنا أشاركك قصّتي كاملةً — بكل تعثّراتها وانتصاراتها.</p>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar-outer">
+        <img src="avatar.png" alt="NAYRA نيرا" class="avatar-face" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STORY ── -->
+
+<section class="story">
+  <div class="story-inner">
+    <span class="section-label">قصّتي معكِ</span>
+    <h2>من التعثّر<br/>إلى <em>إيجاد المكان</em></h2>
+
+```
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot dot-rose">🌱</div>
+    <div class="timeline-body">
+      <h3>البداية — البحث عن الذات</h3>
+      <p>جرّبتُ الكثير. فشلتُ في الكثير. مشاريع بدأت ولم تكتمل، أفكار لم تجد طريقها.
+      لكن كل تجربة كانت <strong>تعلّم</strong> وليست هزيمة.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot dot-sage">💻</div>
+    <div class="timeline-body">
+      <h3>الاكتشاف — Web Developer Full Stack</h3>
+      <p>درستُ تطوير الويب من الصفر حتى الاحتراف.
+      وجدتُ في البرمجة والتقنية <strong>لغةً جديدة</strong> للتعبير عن الإبداع.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot dot-gold">🎨</div>
+    <div class="timeline-body">
+      <h3>الإضافة — التصميم والبزنس</h3>
+      <p>أضفتُ إلى التقنية روح التصميم على كانفا، وبحكم تجربتي في مشاريع متعددة
+      أضفتُ <strong>فهم البزنس</strong> الحقيقي — ليس من الكتب بل من الميدان.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot dot-green">🌟</div>
+    <div class="timeline-body">
+      <h3>NAYRA — نواة النور</h3>
+      <p>وُلدت NAYRA لأن هذا المزيج — التقنية والتصميم والتجربة —
+      يستحق أن يُشارَك. <strong>خاصةً مع المرأة الجزائرية</strong> التي تستحق أن تتقدّم
+      من ذاتها وتحقق أحلامها.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+
+<section class="values">
+  <div class="values-inner">
+    <span class="section-label">ما أؤمن به</span>
+    <h2>قيم <em>NAYRA</em></h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <span class="value-icon">🌿</span>
+        <h3>الإبداع حق للجميع</h3>
+        <p>لا يحتاج الإبداع إلى موهبة فطرية — يحتاج إلى بيئة آمنة وأدوات صحيحة.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">✦</span>
+        <h3>الفشل معلّم لا عدو</h3>
+        <p>كل تعثّر في قصّتي علّمني شيئاً. هذا ما أشاركه معكِ — التجربة الحقيقية.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🌸</span>
+        <h3>المرأة الجزائرية قادرة</h3>
+        <p>أصولي البربرية علّمتني أن المرأة بناءة وصانعة — والرقمي مجالها أيضاً.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">💫</span>
+        <h3>التحول يبدأ من الداخل</h3>
+        <p>قبل أن تتعلّمي الأداة، تتغيّرين أنتِ. هذا هو الفرق بين دورة عادية و NAYRA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+
+<section class="skills">
+  <div class="skills-inner">
+    <span class="section-label">ما أتقنه</span>
+    <h2>خبراتي التي<br/><em>أشاركها معكِ</em></h2>
+    <div class="skills-grid">
+      <div class="skill-chip">
+        <span class="icon">💻</span>
+        <h4>Web Development</h4>
+        <p>Full Stack — HTML, CSS, JS</p>
+      </div>
+      <div class="skill-chip">
+        <span class="icon">🎨</span>
+        <h4>Canva Pro</h4>
+        <p>تصميم احترافي ومنتجات رقمية</p>
+      </div>
+      <div class="skill-chip">
+        <span class="icon">🔍</span>
+        <h4>SEO محلي</h4>
+        <p>الظهور على Google في الجزائر</p>
+      </div>
+      <div class="skill-chip">
+        <span class="icon">💼</span>
+        <h4>البزنس الرقمي</h4>
+        <p>من تجربة ميدانية حقيقية</p>
+      </div>
+      <div class="skill-chip">
+        <span class="icon">🖨️</span>
+        <h4>الطباعة والمنتجات</h4>
+        <p>تصميم للطباعة والمنتجات المادية</p>
+      </div>
+      <div class="skill-chip">
+        <span class="icon">🌐</span>
+        <h4>الحضور الرقمي</h4>
+        <p>استراتيجية الوجود الإلكتروني</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+
+<section class="cta-section">
+  <h2>هل أنتِ مستعدة<br/>لتبدأي <em>رحلتكِ؟</em></h2>
+  <p>انضمي إلى NAYRA واكتشفي ما الذي يمكنكِ تحقيقه حين تجمعين الإبداع بالأداة الصحيحة.</p>
+  <div class="cta-btns">
+    <a href="index.html#courses" class="btn-gold">اكتشفي الدورات ←</a>
+    <a href="contact.html" class="btn-outline-white">تواصلي معي</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+
+<footer>
+  <div class="footer-logo">NAYRA</div>
+  <div class="footer-tagline">وعي • تحول • قيمة</div>
+  <div class="footer-social">
+    <a href="https://t.me/nayraschool" class="social-btn" target="_blank">✈️</a>
+    <a href="https://www.facebook.com/share/1H1znGd4iN/" class="social-btn" target="_blank">📘</a>
+    <a href="https://www.instagram.com/nayraschool" class="social-btn" target="_blank">📸</a>
+    <a href="https://wa.me/213675827201" class="social-btn" target="_blank">💬</a>
+  </div>
+  <nav class="footer-nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="about.html">من أنا</a>
+    <a href="design-course.html">دورة التصميم</a>
+    <a href="web-course.html">دورة الموقع</a>
+    <a href="blog.html">المدونة</a>
+    <a href="contact.html">التواصل</a>
+  </nav>
+  <p class="footer-copy">© 2024 NAYRA نيرا — صُنع بإبداع في الجزائر 🌿</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.value-card, .skill-chip, .timeline-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
